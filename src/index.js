@@ -1,5 +1,16 @@
 import cart from "./modules/cart";
-cart()
+import load from "./modules/load";
+import search from "./modules/search";
+import catalog from "./modules/catalog";
 
-import second from "./modules/second";
-second()
+cart();
+load();
+search();
+catalog();
+
+import priceUp from "./modules/priceUp";
+priceUp()
+import priceDown from "./modules/priceDown";
+priceDown()
+import discount from "./modules/discount";
+discount()

@@ -1,31 +1,35 @@
 export const searchFilter = (goods, value) => {
   return goods.filter((goodsItem) => {
-    return goodsItem.title.toLowerCase().includes(value)
-  })
-}
+    return goodsItem.title.toLowerCase().includes(value);
+  });
+};
 
 export const categoryFilter = (goods, value) => {
   return goods.filter((goodsItem) => {
     return goodsItem.category === value;
-  })
-}
+  });
+};
 
-export const priceFilterUp = (goods, value) => {
+export const priceFilter = (goods, min, max) => {
   return goods.filter((goodsItem) => {
-    return goodsItem.price >= value;
-  })
-}
+    if (min === "" && max === "") {
+      return goodsItem;
+    } else if (min !== "" && max !== "") {
+      return goodsItem.price > +min && goodsItem.price < +max;
+    } else if (min !== "" && max === "") {
+      return goodsItem.price > +min;
+    } else if (min === "" && max !== "") {
+      return goodsItem.price < +max;
+    }
+  });
+};
 
-export const priceFilterDown = (goods, value) => {
+export const discountFilter = (goods, value) => {
   return goods.filter((goodsItem) => {
-    if (value === '') {
-      return goodsItem 
-    } return goodsItem.price <= value;
-  })
-}
-
-export const discountChecked = (goods) => {
-  return goods.filter((goodsItem) => {
-    return goodsItem.sale;
-  })
-}
+    if (value) {
+      return goodsItem.sale === true;
+    } else {
+      return goodsItem;
+    }
+  });
+};
